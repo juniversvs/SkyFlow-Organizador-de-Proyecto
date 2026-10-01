@@ -46,8 +46,8 @@ CREATE TABLE notas (
     id_nota INT AUTO_INCREMENT PRIMARY KEY,
     id_proyecto INT NOT NULL,
     id_usuario INT NOT NULL,
-    importancia enum('verde', 'amarillo', 'rojo')
-        DEFAULT 'verde',
+    importancia enum('VERDE', 'AMARILLO', 'ROJO')
+        DEFAULT 'VERDE',
     titulo VARCHAR(150) NOT NULL,
     contenido TEXT NOT NULL,
     fecha_creacion DATETIME DEFAULT CURRENT_TIMESTAMP,
