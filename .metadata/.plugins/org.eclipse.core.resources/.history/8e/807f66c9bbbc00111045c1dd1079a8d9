@@ -1,0 +1,59 @@
+package com.greener.skyflow.entity;
+
+
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
+import jakarta.persistence.Table;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+
+@Getter
+@Setter
+@NoArgsConstructor
+@Entity
+@Table(name = "proyectos")
+public class Proyecto {
+
+	@Id
+	@Column(name="id_proyecto")
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private int idProyecto;
+	
+	@ManyToOne
+	@JoinColumn(name = "id_creador")
+	private Usuario creador;
+	
+	private String titulo;
+	private String descripcion;
+	
+	@Column(name = "fecha_inicio")
+    private LocalDate fechaInicio;
+	
+	@Column(name = "fecha_fin")
+    private LocalDate fechaFin;
+
+	@Column(name = "fecha_creacion")
+    private LocalDateTime fechaCreacion;
+}
+
+/*CREATE TABLE proyectos (
+    id_proyecto INT AUTO_INCREMENT PRIMARY KEY,
+    id_creador INT NOT NULL,
+    titulo VARCHAR(150) NOT NULL,
+    descripcion TEXT,
+    fecha_inicio DATE,
+    fecha_fin DATE,
+    fecha_creacion DATETIME DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (id_creador)
+        REFERENCES usuarios(id_usuario)
+);
+*/
